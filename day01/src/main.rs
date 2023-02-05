@@ -13,13 +13,13 @@ fn import_food() -> Vec<Vec<i32>> {
     food_bank
 }
 
-fn find_max(nested_list: Vec<Vec<i32>>) -> (i32, i32) {
+fn find_max(nested_list: &Vec<Vec<i32>>) -> (usize, i32) {
     let mut gnome = 0;
     let mut max_macro = 0;
-    let mut itter = 0;
+    let mut itter: usize = 0;
     for g in nested_list {
         let sum: i32 = g.iter().sum();
-        itter = itter + 1;
+        itter += 1;
         if max_macro < sum {
             max_macro = sum;
             gnome = itter;
@@ -28,9 +28,24 @@ fn find_max(nested_list: Vec<Vec<i32>>) -> (i32, i32) {
     (gnome, max_macro)
 }
 
-fn main() {
-    let food_bank = import_food();
+fn top_tree_gnomes(nested_list: &mut Vec<Vec<i32>>) -> i32 {
+    let mut total_marco: i32 = 0;
+    for _i in [1, 2, 3] {
+        let (a, b) = find_max(&nested_list);
+        for index in 0..nested_list[a].len() {
+            nested_list[a + 1][index] = 0;
+            println!("{}", nested_list[a + 1][index]);
+        }
+        println!("{}", a);
+        println!("{}", b);
+        total_marco += b;
+    }
+    total_marco
+}
 
-    let (a, b) = find_max(food_bank);
-    println!("The gnome with the highest amount of macores is {a}, with: {b}");
+fn main() {
+    let mut food_bank = import_food();
+
+    let total_marco = top_tree_gnomes(&food_bank);
+    println!("{}", total_marco)
 }
