@@ -1,0 +1,1 @@
+/Users/gauslaa/Documents/code/rust_advent_of_code/day01/target/debug/day01: /Users/gauslaa/Documents/code/rust_advent_of_code/day01/src/food.txt /Users/gauslaa/Documents/code/rust_advent_of_code/day01/src/main.rs
